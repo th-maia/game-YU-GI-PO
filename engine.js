@@ -184,6 +184,7 @@ function bgmMusic() {
     toggle.toggleAttribute("checked");
     if(toggle.hasAttribute("checked")) {
       bgm.volume = 1;
+      await bgm.play();
     } else {
       bgm.volume = 0;
     }
@@ -191,8 +192,6 @@ function bgmMusic() {
 }
 
 function init() {
-  bgm.volume = 0;
-  state.music.bgm.play();
   drawCards(5, "player1");
   drawCards(5, "computer");
 };
