@@ -174,8 +174,10 @@ async function playAudio(status) {
 }
 
 function init() {
- drawCards(5, "player1");
- drawCards(5, "computer");
+  const bgm = document.getElementById("bgm");
+  bgm.play();
+  drawCards(5, "player1");
+  drawCards(5, "computer");
 };
 
 init()
