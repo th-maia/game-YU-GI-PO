@@ -22,6 +22,10 @@ const state = {
     computerBOX: document.querySelector(".card-box.framed#computer-cards"),
     computer: "computer-cards",
   },
+  music: {
+    toggle: document.getElementById("toggle"),
+    bgm: document.getElementById("bgm"),
+  }
 }
 
 const pathImages = "./src/assets/icons/";
@@ -164,20 +168,34 @@ function resetDuel() {
 }
 
 async function playAudio(status) {
-  const audio = new Audio(`./src/assets/audios/${status}.wav`);
-
-  try{
-    await audio.play();
-  } catch (error) {
-    console.log('audio not found', audio.src, error);
+  if(status === 'Lose' || status === 'Win') {
+    const audio = new Audio(`./src/assets/audios/${status}.wav`);
+    try{
+      await audio.play();
+    } catch (error) {
+      console.log('audio not found', audio.src, error);
+    }
   }
 }
 
+function bgmMusic() {
+  let {toggle, bgm} = state.music
+  toggle.addEventListener("click", async () => {
+    toggle.toggleAttribute("checked");
+    if(toggle.hasAttribute("checked")) {
+      bgm.volume = 1;
+    } else {
+      bgm.volume = 0;
+    }
+  });
+}
+
 function init() {
-  const bgm = document.getElementById("bgm");
-  bgm.play();
+  bgm.volume = 0;
+  state.music.bgm.play();
   drawCards(5, "player1");
   drawCards(5, "computer");
 };
 
+bgmMusic();
 init()
