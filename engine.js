@@ -171,7 +171,7 @@ async function playAudio(status) {
   if(status === 'Lose' || status === 'Win') {
     const audio = new Audio(`./src/assets/audios/${status}.wav`);
     try{
-      audio.volume = 0.5;
+      audio.volume = 0.4;
       await audio.play();
     } catch (error) {
       console.log('audio not found', audio.src, error);
@@ -184,7 +184,7 @@ function bgmMusic() {
   toggle.addEventListener("click", async () => {
     toggle.toggleAttribute("checked");
     if(toggle.hasAttribute("checked")) {
-      bgm.volume = 0.5;
+      bgm.volume = 0.2;
       await bgm.play();
     } else {
       bgm.volume = 0;
